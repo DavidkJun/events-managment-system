@@ -1,13 +1,21 @@
 import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
 
-@Entity()
+@Entity({name: 'user', schema: 'eventsdb'})
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    type: 'bigint',
+  })
   user_id: number
 
-  @Column()
+  @Column({
+    nullable: false,
+    default: '',
+  })
   user_name: string
 
-  @Column()
+  @Column({
+    type: 'bigint',
+    nullable: false,
+  })
   user_group_id: number
 }

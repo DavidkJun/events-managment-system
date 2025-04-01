@@ -1,16 +1,29 @@
 import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
 
-@Entity()
+@Entity({name: 'event', schema: 'eventsdb'})
 export class Event{
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    type: 'bigint',
+  })
   event_id: number
 
-  @Column()
+  @Column({
+    nullable: false,
+    default: '',
+  })
   event_name: string
 
-  @Column()
+  @Column({
+    type: 'bigint',
+    nullable: false,
+    default: 0,
+  })
   event_members_amount: number
 
-  @Column()
+  @Column({
+    type: 'bigint',
+    nullable: false,
+    default: 0,
+  })
   event_groups_amount: number
 }

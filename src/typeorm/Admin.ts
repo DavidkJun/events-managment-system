@@ -1,19 +1,33 @@
 import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
 
-@Entity()
+@Entity({name: 'admin', schema: 'eventsdb'})
 export class Admin {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    type: 'bigint',
+  })
   admin_id: number
 
-  @Column()
+  @Column({
+    nullable: false,
+    default: '',
+  })
   admin_name: string
 
-  @Column()
+  @Column({
+    type: 'bigint',
+    nullable: false,
+  })
   admin_group_id: number
 
-  @Column()
+  @Column({
+    nullable: false,
+    default: '',
+  })
   email: string
 
-  @Column()
+  @Column({
+    nullable: false,
+    default: '',
+  })
   password: string
 }
