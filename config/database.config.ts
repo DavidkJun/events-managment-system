@@ -1,4 +1,5 @@
 import {TypeOrmModuleOptions} from '@nestjs/typeorm';
+import {entities} from '../src/typeorm';
 
 export default ():  {database: TypeOrmModuleOptions}=> ({
   database: {
@@ -8,7 +9,7 @@ export default ():  {database: TypeOrmModuleOptions}=> ({
     username: process.env.DB_USERNAME || 'root',
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE || 'test',
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    entities: entities,
     synchronize: true,
   }
 });
