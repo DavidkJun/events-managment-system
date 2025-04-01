@@ -1,5 +1,5 @@
 import {TypeOrmModuleOptions} from '@nestjs/typeorm';
-import {entities} from '../src/typeorm';
+import entities from '../src/typeorm';
 
 export default ():  {database: TypeOrmModuleOptions}=> ({
   database: {
@@ -11,5 +11,6 @@ export default ():  {database: TypeOrmModuleOptions}=> ({
     database: process.env.DB_DATABASE || 'test',
     entities: entities,
     synchronize: true,
+    dropSchema: true,
   }
 });
