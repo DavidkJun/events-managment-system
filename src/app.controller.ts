@@ -9,7 +9,7 @@ export class AppController {
 
   @Get()
   getHomePage(@Res() res: Response): void {
-    const filePath = join(__dirname, '..', 'client', 'homePage.html');
+    const filePath = join(__dirname,'..', '..', 'client', 'homePage.html');
     return res.sendFile(filePath);
   }
 }

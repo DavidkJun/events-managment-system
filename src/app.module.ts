@@ -6,7 +6,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {ConfigModule} from '@nestjs/config';
-import { UserService } from './src/user/user.service';
+import { GroupsModule } from './groups/groups.module';
 import databaseConfig from '../config/database.config';
 
 @Module({
@@ -17,8 +17,9 @@ import databaseConfig from '../config/database.config';
       rootPath: join(__dirname, '..', 'client'),
       serveRoot: '/client'
     }),
+    GroupsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UserService],
+  providers: [AppService],
 })
 export class AppModule {}
