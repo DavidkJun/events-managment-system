@@ -6,3 +6,7 @@ export type CreateGroupParams = {
   group_name:string;
   activity: string;
 }
+
+export type CreateEventParams = {
+  event_name: string;
+}
