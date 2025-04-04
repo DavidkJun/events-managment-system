@@ -1,23 +1,19 @@
-import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body } from '@nestjs/common';
+import {UserService} from './user.service';
+import { CreateUserDto } from '../dtos/createUser.dto';
 
 @Controller('user')
 export class UserController {
-  @Get()
-  getGroups(): any {
-    return {
-      'group1': "Nika,Andrew,Josh",
-      'group2': "James, Khaled"
-    }
-  }
+  constructor(private readonly userService: UserService) {}
 
   @Post()
-  joinGroup(): string {
-    return "you joined a group"
-  }
+  createUser(@Body() createUserDto: CreateUserDto) {
+    this.userService.createUser(createUserDto)
 
+  }
   @Delete()
-  leaveGroup(): string {
-    return "you left the group";
+  leaveGroup() {
+
   }
 }
 
