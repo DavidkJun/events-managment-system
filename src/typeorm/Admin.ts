@@ -17,6 +17,7 @@ export class Admin {
   @Column({
     type: 'bigint',
     nullable: false,
+    default: 0
   })
   admin_group_id: number
 

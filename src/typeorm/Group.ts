@@ -23,12 +23,14 @@ export class Group{
   @Column({
     type: 'bigint',
     nullable:false,
+    default: 0
   })
   event_id: number
 
   @Column({
     type: 'bigint',
     nullable: false,
+    default: 0
   })
   group_admin_id: number
 
