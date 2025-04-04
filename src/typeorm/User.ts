@@ -16,6 +16,7 @@ export class User {
   @Column({
     type: 'bigint',
     nullable: false,
+    default: 0
   })
   user_group_id: number
 }
