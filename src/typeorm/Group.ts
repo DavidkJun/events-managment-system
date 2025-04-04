@@ -1,7 +1,7 @@
 import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
 
-@Entity({name: 'group', schema: 'eventsdb'})
-export class Group{
+@Entity({name: 'event_groups', schema: 'eventsdb'})
+export class Group {
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })
