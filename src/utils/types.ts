@@ -10,3 +10,9 @@ export type CreateGroupParams = {
 export type CreateEventParams = {
   event_name: string;
 }
+
+export type CreateAdminParams = {
+  admin_name: string;
+  email: string;
+  password: string;
+}
