@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AdminController } from './admin.controller';
-import { AdminService } from './admin.service';
+import { AdminsController } from './admins.controller';
+import { AdminsService } from './admins.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import {Admin} from '../typeorm/Admin';
+import { GroupsModule } from '../groups/groups.module';
+import { EventsModule } from '../events/events.module';
 
 @Module({
-  controllers: [AdminController],
-  providers: [AdminService]
+  imports: [TypeOrmModule.forFeature([Admin]),
+  GroupsModule,
+  EventsModule
+  ],
+  controllers: [AdminsController],
+  providers: [AdminsService]
 })
-export class AdminModule {}
+export class AdminsModule {}
