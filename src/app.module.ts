@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {ConfigModule} from '@nestjs/config';
 import { GroupsModule } from './groups/groups.module';
 import databaseConfig from '../config/database.config';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [UserModule,
@@ -18,6 +19,7 @@ import databaseConfig from '../config/database.config';
       serveRoot: '/client'
     }),
     GroupsModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

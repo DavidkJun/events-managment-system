@@ -14,6 +14,7 @@ export class GroupsController {
    const filePath = join(__dirname, '..', '..','..', 'client', 'groupsPage.html');
    res.sendFile(filePath)
   }
+
   @Post()
   createGroup(@Body() createGroupDto: CreateGroupDto) {
     this.groupsService.createGroup(createGroupDto);

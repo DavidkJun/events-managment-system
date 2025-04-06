@@ -11,7 +11,7 @@ import { Group } from '../typeorm/Group';
   ServeStaticModule.forRoot({
     rootPath: join(__dirname, '..', 'client'),
     serveRoot: '/client'
-  }), TypeOrmModule.forFeature([Group])
+  }), TypeOrmModule.forFeature([Group]),
   ],
   controllers: [GroupsController],
   providers: [GroupsService]

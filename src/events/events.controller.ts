@@ -13,6 +13,9 @@ export class EventsController {
     const filePath = join(__dirname, '..', '..', '..', 'client','eventsPage.html');
     res.sendFile(filePath);
   }
+
+  //Create a method for displaying html file with groups
+
   @Post()
   createEvent(@Body() createEventDto: CreateEventDto) {
     this.eventsService.createEvent(createEventDto)
