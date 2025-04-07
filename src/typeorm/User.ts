@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { Group } from './Group';
 
 @Entity({name: 'user', schema: 'eventsdb'})
@@ -22,5 +22,6 @@ export class User {
   user_group_id: number
 
   @ManyToOne(() => Group, (group) => group.users)
+  @JoinColumn({name: 'user_group_id'})
   group: Group
 }
