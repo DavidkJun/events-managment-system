@@ -1,5 +1,6 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Admin } from './Admin';
+import { User } from './User';
 
 @Entity({name: 'event_group', schema: 'eventsdb'})
 export class Group {
@@ -43,4 +44,7 @@ export class Group {
 
   @OneToOne(() => Admin, (admin) => admin.group)
   admin: Admin;
+
+  @OneToMany(() => User, (user) => user.group)
+  users: User[]
 }

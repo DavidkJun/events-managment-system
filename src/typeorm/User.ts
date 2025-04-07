@@ -1,11 +1,12 @@
-import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
+import { Group } from './Group';
 
 @Entity({name: 'user', schema: 'eventsdb'})
 export class User {
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })
-  user_id: number
+  id: number
 
   @Column({
     nullable: false,
@@ -19,4 +20,7 @@ export class User {
     default: 0
   })
   user_group_id: number
+
+  @ManyToOne(() => Group, (group) => group.users)
+  group: Group
 }
