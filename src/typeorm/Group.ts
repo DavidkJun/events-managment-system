@@ -1,11 +1,12 @@
-import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn } from 'typeorm';
+import { Admin } from './Admin';
 
-@Entity({name: 'event_groups', schema: 'eventsdb'})
+@Entity({name: 'event_group', schema: 'eventsdb'})
 export class Group {
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })
-  group_id: number
+  id: number
 
   @Column({
     nullable: false,
@@ -39,4 +40,7 @@ export class Group {
     default: '',
   })
   activity: string
+
+  @OneToOne(() => Admin, (admin) => admin.group)
+  admin: Admin;
 }

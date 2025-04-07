@@ -1,12 +1,13 @@
-import {PrimaryGeneratedColumn, Column, Entity, BeforeInsert} from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, BeforeInsert, OneToOne, JoinColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Group } from './Group';
 
 @Entity({name: 'admin', schema: 'eventsdb'})
 export class Admin {
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })
-  admin_id: number
+  id: number
 
   @Column({
     nullable: false,
@@ -32,6 +33,10 @@ export class Admin {
     default: '',
   })
   password: string
+
+  @OneToOne(() => Group, (group) => group.admin)
+  @JoinColumn()
+  group: Group
 
   @BeforeInsert()
   async hashPassword() {
