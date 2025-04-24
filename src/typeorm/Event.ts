@@ -1,11 +1,12 @@
-import {PrimaryGeneratedColumn, Column, Entity} from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from 'typeorm';
+import { Group } from './Group';
 
 @Entity({name: 'event', schema: 'eventsdb'})
 export class Event{
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })
-  event_id: number
+  id: number
 
   @Column({
     nullable: false,
@@ -26,4 +27,7 @@ export class Event{
     default: 0,
   })
   event_groups_amount: number
+
+  @OneToMany(() => Group, (group) => group.event)
+  groups: Group[]
 }

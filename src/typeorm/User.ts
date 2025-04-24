@@ -14,13 +14,6 @@ export class User {
   })
   user_name: string
 
-  @Column({
-    type: 'bigint',
-    nullable: false,
-    default: 0
-  })
-  user_group_id: number
-
   @ManyToOne(() => Group, (group) => group.users)
   @JoinColumn({name: 'user_group_id'})
   group: Group

@@ -1,6 +1,7 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn, OneToMany, ManyToOne } from 'typeorm';
 import { Admin } from './Admin';
 import { User } from './User';
+import { Event } from './Event';
 
 @Entity({name: 'event_group', schema: 'eventsdb'})
 export class Group {
@@ -30,13 +31,6 @@ export class Group {
   event_id: number
 
   @Column({
-    type: 'bigint',
-    nullable: false,
-    default: 0
-  })
-  group_admin_id: number
-
-  @Column({
     nullable: false,
     default: '',
   })
@@ -47,4 +41,8 @@ export class Group {
 
   @OneToMany(() => User, (user) => user.group)
   users: User[]
+
+  @ManyToOne(() => Event, (event) => event.groups)
+  @JoinColumn({name: 'event_id'})
+  event: Event
 }
