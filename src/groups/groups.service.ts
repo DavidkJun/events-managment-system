@@ -7,6 +7,11 @@ import { CreateGroupParams } from '../utils/types';
 @Injectable()
 export class GroupsService {
   constructor(@InjectRepository((Group)) private groupRepository: Repository<Group>) {}
+
+  async getGroups(): Promise<Group[]> {
+    return await this.groupRepository.find()
+  }
+
   createGroup(groupDetails: CreateGroupParams) {
     const newGroup = this.groupRepository.create({...groupDetails});
     console.log('New group created, now users can join it');
