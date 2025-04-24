@@ -13,6 +13,7 @@ export class Group {
   @Column({
     nullable: false,
     default: '',
+    unique: true,
   })
   group_name: string
 
@@ -22,13 +23,6 @@ export class Group {
     default: 0,
   })
   members_amount: number
-
-  @Column({
-    type: 'bigint',
-    nullable:false,
-    default: 0
-  })
-  event_id: number
 
   @Column({
     nullable: false,
