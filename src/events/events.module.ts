@@ -8,11 +8,7 @@ import { GroupsModule } from '../groups/groups.module';
 
 @Module({
   imports: [
-  ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..','client'),
-    serveRoot: '/client'
-    }
-  ),TypeOrmModule.forFeature([Event]),
+  TypeOrmModule.forFeature([Event]),
     GroupsModule
   ],
   controllers: [EventsController],

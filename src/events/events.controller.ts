@@ -9,12 +9,8 @@ export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Get()
-  displayEvents(@Res() res: Response):void {
-    const filePath = join(__dirname, '..', '..', '..', 'client','eventsPage.html');
-    res.sendFile(filePath);
+  displayEvents() {
   }
-
-  //Create a method for displaying html file with groups
 
   @Post()
   createEvent(@Body() createEventDto: CreateEventDto) {

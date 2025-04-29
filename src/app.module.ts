@@ -9,17 +9,15 @@ import {ConfigModule} from '@nestjs/config';
 import { GroupsModule } from './groups/groups.module';
 import databaseConfig from '../config/database.config';
 import { EventsModule } from './events/events.module';
+import { AdminsModule } from './admins/admins.module';
 
 @Module({
   imports: [UserModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(databaseConfig().database),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
-      serveRoot: '/client'
-    }),
     GroupsModule,
     EventsModule,
+    AdminsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
